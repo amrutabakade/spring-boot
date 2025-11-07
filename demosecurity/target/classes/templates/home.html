@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>luv2code Company Home Page</title>
+</head>
+
+<body>
+
+    <h2>luv2code Company Home Page</h2>
+    <hr>
+    	Welcome to the luv2code company home page!
+	<hr>
+	<p> 
+		user: <span sec:authentication="principal.username"></span>
+		<br> <br>
+		role: <span sec:authentication="principal.authorities"></span>
+	</p>
+	
+	<hr>
+	
+	<p sec:authorize="hasRole('MANAGER')">
+	    <a th:type="hidden" th:href="@{/leaders}">Leadership Meeting</a>
+	    (Only for Manager peeps)
+	</p>
+
+	<p sec:authorize="hasRole('ADMIN')">
+	    <a th:href="@{/systems}">System</a>
+	    (Only for Admin peeps)
+	</p>
+	<hr>
+	
+	<button onclick="window.location.href='/showMyLoginPage'" class="btn btn-danger">Logout</button>
+</body>
+</html>
